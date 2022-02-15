@@ -1,5 +1,6 @@
 import json
 from pprint import pprint
+from sys import exit
 
 
 def file_reader(path):
@@ -8,10 +9,10 @@ def file_reader(path):
         return decoded_file
 
 
-def sort_dict(dictionary: dict, iterator_key: int) -> dict:
+def sort_dict(dictionary: dict) -> dict:
     dictionary_items = dictionary.items()
     sorted_items = sorted(dictionary_items)
-    return dict(sorted_items).pop(iterator_key)
+    return dict(sorted_items)
 
 
 def main(path_to_file):
@@ -23,45 +24,55 @@ def main(path_to_file):
     iterator = 0
     while True:
         data = file_reader(path_to_file)
-        for element in sorted(path.keys()):
-            # print(i)
-            # print(data)
-            data = data[path[element]]
+        for element in sort_dict(path).keys():
+            try:
+                data = data[path[element]]
+            except KeyError:
+                continue
+            except IndexError:
+                continue
+            except ValueError:
+                continue
+            except TypeError:
+                continue
         if type(data) == dict:
             pprint(data.keys())
             key = input()
             if key == '0':
-                path = sort_dict(path, iterator-11)
+                path.pop(iterator-1)
                 iterator -= 1
             elif key == 'exit':
-                quit()
+                exit()
             else:
                 path[iterator] = key
                 iterator += 1
         elif type(data) == list:
             print(f'please write a number from 0 to {len(data)}')
             try:
-                index_in_list = int(input())
+                index_in_list = input()
                 if index_in_list == 0:
-                    path = sort_dict(path, iterator-1)
+                    path.pop(iterator-1)
                     iterator -= 1
+                elif index_in_list == "exit":
+                    exit()
                 else:
-                    path[iterator] = index_in_list - 1
+                    path[iterator] = int(index_in_list) - 1
                     iterator += 1
             except TypeError:
                 quit()
+            except ValueError:
+                continue
         else:
             print(data)
+            print("!!!!")
             print('That`s a breakpoint of the program, you could return to the previous branch'
                   ' or exit:')
-            print(path)
-            print(iterator)
             result = input()
             if result == '0':
-                path = sort_dict(path, iterator - 1)
-                iterator -= -2
+                path.pop(iterator-1)
+                iterator -= 1
             elif result == 'exit':
-                quit()
+                exit()
             else:
                 print('Invalid input')
 
