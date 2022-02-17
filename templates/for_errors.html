@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    body{
+	background-color: #00e7ed;
+    }
+    .error_message{
+    color: red
+    }
+    </style>
+</head>
+<body>
+<div class="input_data">
+    <form action="/create/map" method="post">
+        <center>
+            <h2>
+                <label for="content">Write nickname of the person who you want to find and amount of friends</label>
+            </h2>
+        </center>
+        <div class="error_message">
+            <h1>
+                You wrote not existed user or not correct type of number
+            </h1>
+        </div>
+        <br>
+        <center>
+            <input name="domain" placeholder="Domain" type="text"/>
+        </center>
+        <br>
+        <center>
+            <input name="amount" placeholder="Amount" type="text"/>
+        </center>
+                <br>
+        <center>
+        <label for="content">Build map</label>
+        <input type="submit" value="Search"/>
+        </center>
+    </form>
+</div>
+</body>
+</html>
