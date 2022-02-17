@@ -2,7 +2,7 @@ from typing import Dict
 import requests
 import folium
 from geopy.geocoders import Nominatim
-from app import dashboard_errors
+from Task3.app import dashboard_errors
 
 
 def make_request(url: str) -> Dict:
