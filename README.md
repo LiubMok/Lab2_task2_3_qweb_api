@@ -30,8 +30,11 @@ Python app that can find users friend and show their location on the map
 
 There is an example how this app work.
 
-![immage]()
+![image](https://user-images.githubusercontent.com/50233066/154742232-f8e3441e-1757-45bc-8c72-f1667b9dabb4.png)
 
+And that's a result:
+
+![image](https://user-images.githubusercontent.com/50233066/154742574-408b94bf-021c-474d-a804-e7262a7b4360.png)
 
 ## Used libs
 
